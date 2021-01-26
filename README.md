@@ -194,4 +194,4 @@ import logger from './../monitoring/datadog-logger'
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE.md`](https://gitlab.beuth-hochschule.de/s80116/wp-gruppe1/-/blob/master/LICENSE.md) for more information.
+Distributed under the MIT License. See [`LICENSE.md`](https://github.com/Gelantine-Ritter/aktuelle-webtechnologien-project/blob/master/LICENSE.md) for more information.

@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "max-len": [1, 120, 2, { "ignoreComments": true }],
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "no-unused-vars": 0
+  },
+  "globals": {
+    "document": false
+  }
+}

@@ -1,0 +1,65 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+# necessary to turn off TSL in order to use DinD
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
+
+stages:
+  - build
+  - lint
+  - deploy:test_stage
+  - test
+  - build_image
+
+build:
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+
+lint:
+  stage: lint
+  script: npm run lint
+
+pages:
+  stage: deploy:test_stage
+  script:
+    - CRUD_URL=$CI_CRUD_URL npm run build
+  artifacts:
+    paths:
+      - public
+
+test:general_flow:
+  stage: test
+  image: circleci/node:10.14-browsers
+  script:
+    - TEST_ENV=test npm run testGeneralFlow
+
+test:crud_functionality:
+  stage: test
+  image: circleci/node:10.14-browsers
+  script:
+    - TEST_ENV=test npm run testCRUDFunctionality
+
+docker_build_master:
+  stage: build_image
+  image: docker:latest
+  services:
+    - docker:dind
+  tags:
+    - docker-privileged
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
+  only:
+    refs:
+      - tags

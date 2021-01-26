@@ -1,4 +1,4 @@
-[![The MIT License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat-square)](https://gitlab.beuth-hochschule.de/s80116/wp-gruppe1/-/blob/master/LICENSE.md)
+[![The MIT License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat-square)](https://github.com/Gelantine-Ritter/aktuelle-webtechnologien-project/blob/master/LICENSE.md)
 [![pipeline status](https://gitlab.beuth-hochschule.de/s80116/wp-gruppe1/badges/master/pipeline.svg)](https://gitlab.beuth-hochschule.de/s80116/wp-gruppe1/-/commits/master)
 
 # MagicBySvelte
